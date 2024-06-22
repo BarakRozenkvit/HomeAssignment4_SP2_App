@@ -86,7 +86,7 @@ int main(int argc,char* argv[])
         cout << node->get_value() << endl;
     } //should print: 1.1, 1.2, 1.5, 1.3, 1.6, 1.4
 
-    cout << three_ary_tree; // Should print the graph using GUI.
+    cout << three_ary_tree; // Should print the graph using GUI!
 
     return app.exec();
 }
