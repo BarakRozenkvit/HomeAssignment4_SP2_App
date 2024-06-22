@@ -23,6 +23,7 @@ int main(int argc,char* argv[])
 
     tree.add_sub_node(root_node, n1);
     tree.add_sub_node(root_node, n2);
+    tree.add_sub_node(root_node, n2);
     tree.add_sub_node(n1, n3);
     tree.add_sub_node(n1, n4);
     tree.add_sub_node(n2, n5);
