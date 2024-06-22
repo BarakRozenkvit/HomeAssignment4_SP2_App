@@ -10,14 +10,12 @@ class Node{
 public:
     Node() =default;
     Node(T data): _data(data) ,_childs({}){};
-    //Cp Cons
     Node(Node<T>& other){
         _data = other._data;
         for(int i=0;i<other.getChilds().size();i++){
             _childs.push_back(new Node<T>(*(other.getChilds()[i])));
         }
     }
-    // Destuctor
     ~Node(){
         for(int i=0;i<_childs.size();i++){
             delete _childs[i];
@@ -27,10 +25,6 @@ public:
     void add_child(Node<T>& node){
         Node<T>* node1 = new Node<T>(node);
         _childs.push_back(node1);
-    }
-
-    void setData(T val){
-        _data = val;
     }
 
     T get_value(){
@@ -63,6 +57,15 @@ public:
         return node->_data == this->_data;
     }
 
-//    operator=()
+    Node<T>& operator=(Node<T>& other){
+        if(this!=&other){
+            _data = other._data;
+            _childs.clear();
+            for(int i=0;i<other.getChilds().size();i++){
+                _childs.push_back(new Node<T>(*(other.getChilds()[i])));
+            }
+        }
+        return *this;
+    }
 
 };
