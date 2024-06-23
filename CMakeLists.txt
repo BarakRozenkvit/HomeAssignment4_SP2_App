@@ -12,20 +12,30 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+
 set(PROJECT_SOURCES
-        Demo.cpp
         Iterator.hpp
         Heap.hpp
         Tree.hpp
         TreeView.hpp
         Node.hpp
         TreeView.cpp
+        Complex.cpp
+)
+add_executable(Test
+        Iterator.hpp
+        Heap.hpp
+        Tree.hpp
+        Node.hpp
+        TestCounter.cpp
+        Test.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(HomeAssignment4_SP2_App
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+            main.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET HomeAssignment4_SP2_App APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

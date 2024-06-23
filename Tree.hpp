@@ -2,7 +2,6 @@
 #include "Node.hpp"
 #include "Iterator.hpp"
 #include "Heap.hpp"
-#include "TreeView.hpp"
 #pragma once
 
 using namespace std;
@@ -40,10 +39,14 @@ private:
     MinHeap<T> _heap;
 
 public:
-    Tree():_V(0){};
+    Tree():_V(0),_root(nullptr){};
     ~Tree(){
         delete _root;
     };
+
+    Node<T>* get_root(){
+        return _root;
+    }
 
     void add_root(Node<T>& root){
         _root = new Node<T>(root);
@@ -64,29 +67,33 @@ public:
         }
     }
 
-    iterator_preorder<T> begin_pre_order(){
-        return iterator_preorder<T>(_root);
+    using iterator_pre_order = typename conditional<n == 2, iterator_preorder<T>,iterator_dfs<T>>::type;
+    using iterator_post_order = typename conditional<n == 2, iterator_postorder<T>,iterator_dfs<T>>::type;
+    using iterator_in_order = typename conditional<n == 2, iterator_inorder<T>,iterator_dfs<T>>::type;
+
+    iterator_pre_order begin_pre_order(){
+        return iterator_pre_order(_root);
     }
 
-    iterator_preorder<T> end_pre_order(){
-        return iterator_preorder<T>();
+    iterator_pre_order end_pre_order(){
+        return iterator_pre_order();
     }
 
-    iterator_postorder<T> begin_post_order(){
+    iterator_post_order begin_post_order(){
 
-        return iterator_postorder<T>(_root);
+        return iterator_post_order(_root);
     }
 
-    iterator_postorder<T> end_post_order(){
-        return iterator_postorder<T>();
+    iterator_post_order end_post_order(){
+        return iterator_post_order();
     }
 
-    iterator_inorder<T> begin_in_order(){
-        return iterator_inorder<T>(_root);
+    iterator_in_order begin_in_order(){
+        return iterator_in_order(_root);
     }
 
-    iterator_inorder<T> end_in_order(){
-        return iterator_inorder<T>();
+    iterator_in_order end_in_order(){
+        return iterator_in_order();
     }
 
     iterator_bfs<T> begin_bfs_scan(){
@@ -122,32 +129,4 @@ public:
 
         return {heap_iterator<T>(&_heap.getHeap()[0],0),heap_iterator<T>(nullptr,_heap.getHeap().size())};
     }
-
-    void draw(TreeView* view,Node<T>* current,int dB,int x,int y){
-        view->addNode(x,y);
-        view->addText(x,y,to_string(current->get_value()));
-        int size = current->getChilds().size();
-        if(size){
-            int d = (2*dB)/(size+1);
-            int pX = x-dB + d;
-            int pY = y + 8*RADIUS;
-            for(int i=0;i<size;i++){
-                view->addLine(x,y,pX,pY);
-                draw(view,current->getChilds()[i],d,pX,pY);
-                pX += d;
-            }
-        }
-    }
-
-    friend ostream& operator<<(ostream& out,Tree& d){
-        TreeView* view = new TreeView();
-        if(d._root){
-            d.draw(view,d._root,view->width()/2,view->width()/2,RADIUS);
-        }
-        view->show();
-        out << "Printed in GUI"<<endl;
-        return out;
-    }
-
-
 };

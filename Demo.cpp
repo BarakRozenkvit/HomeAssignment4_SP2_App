@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Node.hpp"
 #include "Tree.hpp"
+#include "TreeView.hpp"
 #include <QApplication>
 
 using namespace std;
@@ -22,7 +23,6 @@ int main(int argc,char* argv[])
     Node<int> n5 = Node(6);
 
     tree.add_sub_node(root_node, n1);
-    tree.add_sub_node(root_node, n2);
     tree.add_sub_node(root_node, n2);
     tree.add_sub_node(n1, n3);
     tree.add_sub_node(n1, n4);
@@ -57,7 +57,8 @@ int main(int argc,char* argv[])
         cout << node->get_value() << endl;
     } // same as BFS: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6
 
-    cout << tree; // Should print the graph using GUI.
+    TreeView treeview;
+    treeview << tree;
 
     pair<heap_iterator<int>, heap_iterator<int>> iters = tree.myHeap();
 
@@ -87,7 +88,8 @@ int main(int argc,char* argv[])
         cout << node->get_value() << endl;
     } //should print: 1.1, 1.2, 1.5, 1.3, 1.6, 1.4
 
-    cout << three_ary_tree; // Should print the graph using GUI!
+    TreeView treeview1;
+    treeview1 << three_ary_tree;
 
     return app.exec();
 }
