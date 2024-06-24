@@ -9,7 +9,7 @@ TEST_CASE("Empty Tree"){
     Tree<int,2> tree;
     string res = "";
     for (auto node = tree.begin_pre_order(); node != tree.end_pre_order(); ++node) {
-        res += to_string(node->get_value());
+        res += to_string(rdc node->get_value());
     }
     for (auto node = tree.begin_post_order(); node != tree.end_post_order(); ++node) {
         res += to_string(node->get_value());

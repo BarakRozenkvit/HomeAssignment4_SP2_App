@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#pragma once
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
         return _real < other._real && _imag < other._imag;
     }
 
-    friend string to_string(Complex& complex){
+    friend string to_string(const Complex& complex){
            return to_string(complex._real) + "+" + to_string(complex._imag) +"i";
        }
 
