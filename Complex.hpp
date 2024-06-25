@@ -17,6 +17,11 @@ public:
     }
 
     // TODO: what is < between complex numbers
+    /*
+     *
+שבוע טוב, אני לא מבין את השאלה. בהינתן מספרים מרוכבים z=a+bi,
+z'=c+di אתה יכול להשוות את השורש של a^2+b^2 עם השורש של c^2+d^2 ולקחת את המקסימלי.
+     */
     bool operator<(Complex& other){
         return _real < other._real && _imag < other._imag;
     }
