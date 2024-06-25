@@ -1,6 +1,7 @@
 #include <stack>
 #include <queue>
 #include "Node.hpp"
+#include <algorithm>
 #pragma once
 
 template <typename T>

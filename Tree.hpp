@@ -1,4 +1,5 @@
 #include <vector>
+#include <stdexcept>
 #include "Node.hpp"
 #include "Iterator.hpp"
 #include "Heap.hpp"

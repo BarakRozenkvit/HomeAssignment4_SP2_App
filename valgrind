@@ -23,4 +23,4 @@ valgrind: test
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 clean:
-	rm -f *.o Catan test
+	rm -f *.o test
