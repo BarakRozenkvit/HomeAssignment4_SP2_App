@@ -38,10 +38,6 @@ public:
             }
         }
     }
-
-protected:
-    void paintEvent(QPaintEvent* event) override;
-
     template <typename T,int n> friend TreeView& operator<<(TreeView& treeview,Tree<T,n>& tree){
         if(tree.get_root()){
             treeview.draw(tree.get_root(),treeview.width()/2,treeview.width()/2,RADIUS);
@@ -49,4 +45,7 @@ protected:
         treeview.show();
         return treeview;
     }
+
+protected:
+    void paintEvent(QPaintEvent* event) override;
 };
