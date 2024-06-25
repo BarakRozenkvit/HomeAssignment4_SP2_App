@@ -3,9 +3,16 @@
 ___  
 הפעלה:ָ
 ---
-לקימפול `make tree`
-
-לקימפול טסטים `make test`
+לקימפול
+```
+qmake tree.pro
+make tree
+```
+לקימפול טסטים
+```
+qmake test.pro
+make test
+```
 
 מימוש מחלקת העץ `Tree.hpp`
 -
