@@ -5,12 +5,12 @@ ___
 ---
 לקימפולל
 ```
-qmake tree.pro
+qmake Project.pro -config tree
 make tree
 ```
 לקימפול טסטים
 ```
-qmake test.pro
+qmake Project.pro -config test
 make test
 ```
 
