@@ -3,7 +3,7 @@
 ___  
 הפעלה:ָ
 ---
-לקימפולל
+לקימפול
 ```
 qmake Project.pro -config tree
 make tree
@@ -63,7 +63,7 @@ make test
 - קבלת המצביע לילד הכי שמאלי `Node<T>* getLeft()`
 - קבלת המצביע לילד הכי ימני `Node<T>* getRight()`
 - קבלת וקטור הילדים של הצומת `vector<Node<T>*> getChilds()`
-- `אופרטור השוואה בין צמתים bool operator==(Node<T>* node)`
+- אופרטור השוואה בין צמתים `bool operator==(Node<T>* node)`
 - אופרטור השמה להעתקה עמוקה של צמתים `Node<T>& operator=(Node<T>& other)`
 
 מימוש קובץ איטרטורים `Iterator.hpp`
