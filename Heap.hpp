@@ -8,7 +8,13 @@ template<typename T>
 class MinHeap{
 
     vector<T> _array;
-
+    /**
+     * Recursive Algorithm:
+     *  for index, check if left child or right child is smaller then him,
+     *  if they are, swap and recursive call on the new index
+     * @param heapArray
+     * @param i
+     */
     void minHeapify(vector<T>& heapArray, int i){
         int lowest;
         int l = 2*i;
@@ -33,7 +39,9 @@ class MinHeap{
             minHeapify(heapArray, lowest);
         }
     }
-
+    /**
+     * Algorithm: Heapify for V/2 vertices and Heap is made
+     */
     void buildMinHeap(){
         for(int i=_array.size()/2;i >= 0 ;i--){
             minHeapify(_array,i);

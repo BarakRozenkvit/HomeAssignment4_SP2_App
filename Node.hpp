@@ -10,6 +10,10 @@ class Node{
 public:
     Node() =default;
     Node(T data): _data(data) ,_childs({}){};
+    /**
+     * Copy Constructor
+     * @param other
+     */
     Node(Node<T>& other){
         _data = other._data;
         for(int i=0;i<other.getChilds().size();i++){
@@ -56,7 +60,11 @@ public:
     bool operator==(Node<T>* node){
         return node->_data == this->_data;
     }
-
+    /**
+     * Assignmnet Operator
+     * @param other
+     * @return
+     */
     Node<T>& operator=(Node<T>& other){
         if(this!=&other){
             _data = other._data;

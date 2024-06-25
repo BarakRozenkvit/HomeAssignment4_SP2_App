@@ -55,8 +55,10 @@ public:
     }
 
     void add_sub_node(Node<T>& rootNode,Node<T>& childNode){
+        // search for node
         for(auto node = begin();node!=end();++node){
             if(rootNode == *node){
+                // if Child vector is full throw error
                 if(node->getChilds().size()<n) {
                     node->add_child(childNode);
                 }
@@ -72,6 +74,7 @@ public:
     using iterator_post_order = typename conditional<n == 2, iterator_postorder<T>,iterator_dfs<T>>::type;
     using iterator_in_order = typename conditional<n == 2, iterator_inorder<T>,iterator_dfs<T>>::type;
 
+    // Iterators:
     iterator_pre_order begin_pre_order(){
         return iterator_pre_order(_root);
     }
@@ -113,6 +116,7 @@ public:
         return iterator_dfs<T>();
     }
 
+    // Class iterators:
     tree_iterator begin(){
         return tree_iterator(this);
     }
@@ -121,8 +125,10 @@ public:
         return tree_iterator();
     }
 
+    // Heap Iterator
     pair<heap_iterator<T>,heap_iterator<T>> myHeap(){
         if(n!=2){
+            // if not a binary tree throw error
             throw invalid_argument("not 2-ari tree");
         }
 

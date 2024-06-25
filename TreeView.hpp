@@ -23,6 +23,14 @@ public:
     void addNode(int x,int y);
     void addText(int x,int y,string data);
     void addLine(int xOrigin,int yOrigin,int xDest,int yDest);
+    /**
+     * Go through current node and his childs and add data structures to draw event
+     * @tparam T - Object
+     * @param current - current Node
+     * @param dB - distance between him and his brothers
+     * @param x - coordinate x
+     * @param y - coordinate y
+     */
     template<typename T> void draw(Node<T>* current,int dB,int x,int y) {
         this->addNode(x,y);
         this->addText(x,y,to_string(current->get_value()));

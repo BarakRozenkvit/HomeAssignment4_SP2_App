@@ -11,7 +11,10 @@ public:
     iterator_preorder(Node<T>* ptr= nullptr) {
         _stack.push(nullptr);
         _stack.push(ptr);};
-
+    /**
+     * Refernce: https://www.geeksforgeeks.org
+     * pop from stack, if has right child push to stack if has left child push to stack
+     */
     iterator_preorder& operator++() {
         Node<T>* current = _stack.top();
         _stack.pop();
@@ -52,6 +55,7 @@ public:
     }
 
     /**
+     * Refrence: https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/
      * /        1.1 Create an empty stack
 //        2.1 Do following while root is not NULL
 //          a) Push root's right child and then root to stack.
@@ -122,6 +126,7 @@ public:
         }
     }
     /**
+     * Referance: https://www.geeksforgeeks.org/binary-tree-iterator-for-inorder-traversal/
      *  //IF stack is empty (or hasNext() returns false)
             //Throw an exception
         //ELSE
@@ -133,7 +138,6 @@ public:
                 //add next to the stack
                 //next = next.left
             //return current
-     * @return
      */
     iterator_inorder& operator++() {
         if(_stack.empty()){
@@ -178,6 +182,10 @@ public:
             _queue.push(_current);
         }
     }
+    /**
+     * intialize queue, for every v in queue get his neighbors and add them to queue
+     * @return
+     */
     iterator_bfs& operator++() {
         _current= _queue.front();
         _queue.pop();
@@ -220,6 +228,7 @@ public:
         }
     }
     /**
+     * Reference: https://www.geeksforgeeks.org/iterative-depth-first-traversal/
      * Algorithm:
             Created a stack of nodes and visited array.
             Insert the root in the stack.
@@ -272,6 +281,10 @@ public:
         _idx = idx;
         _current = ptr;
     }
+    /**
+     * Similar to vector iterator, get next Node from memory
+     * @return
+     */
     heap_iterator& operator++() {
         ++_idx;
         ++_current;
