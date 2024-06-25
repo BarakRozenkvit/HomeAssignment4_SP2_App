@@ -22,10 +22,10 @@ ___
 -	קבלת מצביע של שורש העץ `Node<T>* get_root()`
 -	הוספת שורש לעץ `void add_root(Node<T> &root)`
 -	הוספת ילד לצומת בעץ `void add_sub_node(Node<T>& root,Node<T>& child)`
--	הגדרת תנאים לפונקציות האופרטורים, כשאר העץ הוא בינארי תחזיר אופרטור מסוים, אחרת תחזיר אופרטור אחר:
-     o	`Using iterator_pre_order`
-     o	`Using iterator_post_order`
-     o	`Using iterator_in_order`
+  -	הגדרת תנאים לפונקציות האופרטורים, כשאר העץ הוא בינארי תחזיר אופרטור מסוים, אחרת תחזיר אופרטור אחר:
+`Using iterator_pre_order`
+`Using iterator_post_order`
+`Using iterator_in_order`
 -	קבלת התחלה של איטרטור פרי אורדר `iterator_pre_order begin_pre_order()`
 -	קבלת סוף של איטרטור פרי אורדר `iterator_pre_order end_pre_order()`
 -	קבלת התחלה של איטרטור פוסט אורדר `iterator_post_order begin_pre_order()`
