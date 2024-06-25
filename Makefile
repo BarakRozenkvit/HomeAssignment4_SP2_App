@@ -5,16 +5,15 @@ CXX=c++
 CXXFLAGS=-std=c++11 -Werror
 VALGRIND_FLAGS==-v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
-SOURCES= main.cpp
-SOURCES_TESTS= Board.cpp Catan.cpp Graph.cpp Player.cpp Property.cpp TestCounter.cpp Test.cpp Card.cpp Dice.cpp Land.cpp
+INCLUDE = /opt/homebrew/include/QtWidgets /opt/homebrew/include/QtWidgets/QtWidgetsDepends
+SOURCES= main.cpp TreeView.cpp
 OBJECTS=$(subst .cpp,.o,$(SOURCES))
-OBJECTS_TESTS = $(subst .cpp,.o,$(SOURCES_TESTS))
 
-catan: Catan.o $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ -o catan
+tree: main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o tree
 
 
-test: TestCounter.o Test.o $(OBJECTS_TESTS)
+test: TestCounter.o Test.o
 	$(CXX) $(CXXFLAGS) $^ -o test
 
 tidy:
@@ -25,7 +24,7 @@ valgrind: catan test
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./test 2>&1 | { egrep "lost| at " || true; }
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) --compile $< -o $@
+	$(CXX) $(CXXFLAGS) -I $(INCLUDE) --compile $< -o $@
 
 clean:
 	rm -f *.o Catan test
